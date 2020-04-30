@@ -4,14 +4,15 @@
         "url": "https://dblp.org/search/publ/api",
         "method": "GET",
         "params": {
-            "q": false,
+            "q": true,
             "h": false,
-            "author": {
-                "template": "author:{{first_name}}_{{last_name}}:",
-                "required": false,
-                "removeIfEmpty": true,
-                "toKey": "q"
-            }
+            "f": false
+        },
+        "pagination":{
+            "type":"limit",
+            "anchor_key":"f",
+            "count_key":"h",
+            "max_count":1000
         }
     },
     "response": {

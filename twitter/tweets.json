@@ -9,13 +9,26 @@
             "tokenServerUrl": "https://api.twitter.com/oauth2/token"
         },
         "params": {
-            "q": true
+            "q": true,
+            "count": false,
+            "max_id": false
+        },
+        "pagination":{
+            "type":"cursor",
+            "cursor_id":"id",
+            "cursor_key":"max_id",
+            "count_key":"count",
+            "max_count": 100
         }
     },
     "response": {
         "ctype": "application/json",
         "tablePath": "$.statuses[*]",
         "schema": {
+            "id": {
+                "target": "$.id",
+                "type": "string"
+            },
             "created_at": {
                 "target": "$.created_at",
                 "type": "string"

@@ -1,7 +1,7 @@
 {
     "version": 1,
     "request": {
-        "url": "https://api.spotify.com/v1/search?type=album",
+        "url": "https://api.spotify.com/v1/search?type=track",
         "method": "GET",
         "authorization": {
             "type": "OAuth2",
@@ -22,39 +22,27 @@
     },
     "response": {
         "ctype": "application/json",
-        "tablePath": "$.albums.items[*]",
+        "tablePath": "$.tracks.items[*]",
         "schema": {
-            "album_name": {
+            "name": {
                 "target": "$.name",
                 "type": "string"
             },
-            "release_date":{
-                "target": "$.release_date",
+            "album": {
+                "target": "$.album.name",
                 "type": "string"
             },
-            "total_tracks":{
-                "target": "$.total_tracks",
+            "artists":{
+                "target": "$.artists[0].name",
                 "type": "string"
-            },
-            "artist":{
-                "target": "$.artists[*].name",
-                "type": "object"
             },
             "available_markets":{
                 "target": "$.available_markets",
                 "type": "string"
             },
-            "external urls":{
-                "target": "$.external_urls",
-                "type": "string"
-            },
-            "image url":{
-                 "target": "$.images[0].url",
-                 "type": "string"
-            },
-            "album type":{
-                "target": "$.album_type",
-                 "type": "string"
+            "duration_ms":{
+                "target": "$.duration_ms",
+                "type": "int"
             }
         },
         "orient": "records"
